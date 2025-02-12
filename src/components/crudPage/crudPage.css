@@ -80,6 +80,11 @@
     background: -webkit-linear-gradient(107deg, rgba(255,75,43,1) 0%, rgba(255,65,108,1) 100%);
 }
 
+.form-description {
+    font-weight: 16px;
+    text-align: center;
+}
+
 @media screen and (max-width: 948px) {
     .left-form,
     .right-side {
