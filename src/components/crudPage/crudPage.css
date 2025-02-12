@@ -1,0 +1,113 @@
+.form-container {
+    display: flex;
+    height: 100%;
+
+    position: relative;
+
+}
+
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+
+    padding: 5px 10px;
+    border-radius: 4px;
+
+    background: linear-gradient(107deg, rgba(255,75,43,1) 0%, rgba(255,65,108,1) 100%);
+}
+/* Registration Page */
+
+.left-form-wrapper,
+.right-side {
+    display: flex;
+    flex: 1; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+
+    padding: 0 40px;
+
+}
+
+.left-form {
+    text-align: center;
+    max-width: 350px;
+}
+
+
+.title {
+    font-weight: 700;
+    font-size: 3rem;
+
+    margin-bottom: 56px;
+}
+
+.btn-reg_log {
+    height: 50px;
+    padding: 0 50px;
+
+    border-radius: 10px;
+    border: 0;
+
+    background-color: var(--btn-red);
+
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: inherit;
+
+    margin-top: 90px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.btn-reg_log:hover {
+    background-color: var(--btn-red-hover);
+    transform: translateY(-4px);
+}
+
+.transparent-back {
+    background: transparent;
+    border: 2px solid #fff;
+}
+
+.right-side {
+    background: rgb(255,75,43);
+    background: -moz-linear-gradient(107deg, rgba(255,75,43,1) 0%, rgba(255,65,108,1) 100%);
+    background: -webkit-linear-gradient(107deg, rgba(255,75,43,1) 0%, rgba(255,65,108,1) 100%);
+}
+
+@media screen and (max-width: 948px) {
+    .left-form,
+    .right-side {
+        margin: 0 30px;
+    }
+
+    .left-form-wrapper {
+        padding: 0;
+    }
+    
+    .right-side {
+        display: none;
+    }
+    
+    .app-container {
+        height: 100vh;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .app-container {
+        border-radius: 0;
+    }
+}
