@@ -56,6 +56,7 @@
     font-size: 16px;
     font-weight: 500;
     font-family: inherit;
+    text-align: center;
 
     margin-top: 90px;
 
@@ -74,6 +75,15 @@
     border: 2px solid #fff;
 }
 
+.checkbox-container {
+    width: 100%;
+    text-align: start;
+}
+
+.checkbox-container label, input[type="checkbox"] {
+    cursor: pointer;
+}
+
 .right-side {
     background: rgb(255,75,43);
     background: -moz-linear-gradient(107deg, rgba(255,75,43,1) 0%, rgba(255,65,108,1) 100%);
@@ -83,6 +93,25 @@
 .form-description {
     font-weight: 16px;
     text-align: center;
+}
+
+.message {
+    text-align: start;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.red {
+    color: #ff3030;
+}
+
+.green {
+    color: #0ca401;
+}
+
+.adaptive {
+    margin-top: 20px;
+    display: none;
 }
 
 @media screen and (max-width: 948px) {
@@ -114,5 +143,14 @@
 
     .app-container {
         border-radius: 0;
+    }
+
+    .btn-reg_log {
+        height: 40px;
+        
+    }
+
+    .adaptive {
+        display: inline;
     }
 }

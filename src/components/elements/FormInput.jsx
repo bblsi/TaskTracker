@@ -6,6 +6,7 @@ export default function FormInput(props) {
         type={props.type}
         placeholder={props.placeholder}
         aria-label={props.ariaLabel}
+        onChange={props.onChange}
       />
     </>
   );

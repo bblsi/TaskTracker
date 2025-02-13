@@ -30,16 +30,13 @@ export default function AuthForm() {
     }
   };
 
-  const handleUsername = async () => {
+  const handleLogin = async () => {
     try {
-      const response = await fetch(
-        "http://89.22.225.116:8080/api/auth/username",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password }),
-        }
-      );
+      const response = await fetch("http://89.22.225.116:8080/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.token);
@@ -78,7 +75,7 @@ export default function AuthForm() {
 
   return (
     <div>
-      <input
+      {/* <input
         id="username"
         name="username"
         type="text"
@@ -95,9 +92,9 @@ export default function AuthForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleRegister}>Зарегистрироваться</button>
-      <button onClick={handleUsername}>Войти</button>
+      <button onClick={handleLogin}>Войти</button>
       <button onClick={() => fetchTasks("")}>Получить задачи</button>
-      <button onClick={() => fetchTasks("/add")}>Добавить задачу</button>
+      <button onClick={() => fetchTasks("/add")}>Добавить задачу</button> */}
     </div>
   );
 }
