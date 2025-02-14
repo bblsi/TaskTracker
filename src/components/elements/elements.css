@@ -1,4 +1,7 @@
 /* Input */
+.input-container {
+    position: relative;
+}
 
 .form-input {
     height: 50px;
