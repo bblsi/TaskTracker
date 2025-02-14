@@ -8,13 +8,20 @@ export default function RegisterForm() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
 
   const handleRegister = async () => {
-    // console.log("Username:", username);
-    // console.log("Password:", password);
+    setError("");
+    setSucsess("");
 
     if (!password || !username) {
       setError("Логин и пароль не могут быть пустыми");
+      return;
+    } else if (password.length < 8) {
+      setError("Пароль должен содержать не менее 8 символов");
+      return;
+    } else if (password != checkPassword) {
+      setError("Пароли не совпадают");
       return;
     }
 
@@ -62,7 +69,7 @@ export default function RegisterForm() {
             type="username"
             value={username}
             onChange={(e) => {
-              console.log("Username:", e.target.value); // Проверьте, что значение обновляется
+              console.log("Username:", e.target.value);
               setUsername(e.target.value);
             }}
           />
@@ -77,6 +84,8 @@ export default function RegisterForm() {
             placeholder="Повторный пароль"
             ariaLabel="repeat-password"
             type={showPassword ? "text" : "password"}
+            value={checkPassword}
+            onChange={(e) => setCheckPassword(e.target.value)}
           />
           <div className="checkbox-container">
             <input
@@ -89,8 +98,8 @@ export default function RegisterForm() {
               Показать пароль
             </label>
           </div>
-          {error && <p className="message red">{error} !</p>}
-          {sucsess && <p className="message green">{sucsess} !</p>}
+          {error && <p className="message red">{error}!</p>}
+          {sucsess && <p className="message green">{sucsess}!</p>}
           <button type="submit" className="btn-reg_log">
             Зарегистрироваться
           </button>
@@ -102,7 +111,8 @@ export default function RegisterForm() {
       <div className="right-side">
         <h2 className="title">Привет, Чмо!</h2>
         <p className="form-description">
-          Уже есть аккаунт ? Нажми кнопку “Войти” и продолжи свое путешествие
+          Уже есть аккаунт ? Нажми кнопку “Войти” и продолжи свое путешествие с
+          <b>TaskTracker</b>
         </p>
         <button className="btn-reg_log transparent-back">Войти</button>
       </div>

@@ -134,6 +134,14 @@
         width: 100%;
         border-radius: 0;;
     }
+
+    .adaptive {
+        display: inline;
+    }
+
+    .btn-reg_log {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -148,9 +156,5 @@
     .btn-reg_log {
         height: 40px;
         
-    }
-
-    .adaptive {
-        display: inline;
     }
 }
