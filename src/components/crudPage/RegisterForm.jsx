@@ -1,5 +1,6 @@
 import { Suspense, useState } from "react";
 import FormInput from "../elements/FormInput";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,6 +10,11 @@ export default function RegisterForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLoginRedirect = () => {
+    navigate("/login");
+  };
 
   const handleRegister = async () => {
     setError("");
@@ -69,7 +75,6 @@ export default function RegisterForm() {
             type="username"
             value={username}
             onChange={(e) => {
-              console.log("Username:", e.target.value);
               setUsername(e.target.value);
             }}
           />
@@ -114,7 +119,12 @@ export default function RegisterForm() {
           Уже есть аккаунт ? Нажми кнопку “Войти” и продолжи свое путешествие с
           <b>TaskTracker</b>
         </p>
-        <button className="btn-reg_log transparent-back">Войти</button>
+        <button
+          onClick={handleLoginRedirect}
+          className="btn-reg_log transparent-back"
+        >
+          Войти
+        </button>
       </div>
     </section>
   );

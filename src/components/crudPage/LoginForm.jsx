@@ -1,5 +1,6 @@
 import { Suspense, useState } from "react";
 import FormInput from "../elements/FormInput";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const [error, setError] = useState("");
@@ -8,6 +9,12 @@ export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleRegisterRedirect = () => {
+    navigate("/");
+  };
 
   const handleLogin = async () => {
     setError("");
@@ -28,7 +35,7 @@ export default function LoginForm() {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data.accessToken);
         setSucsess("Вход успешно выполнен");
       } else {
         if (data.message === "Invalid password") {
@@ -63,7 +70,6 @@ export default function LoginForm() {
             type="username"
             value={username}
             onChange={(e) => {
-              console.log("Username:", e.target.value);
               setUsername(e.target.value);
             }}
           />
@@ -103,7 +109,10 @@ export default function LoginForm() {
           Нет аккаунта ? Нажми кнопку "Зарегистрироваться" и начни свое
           путешествие с <b>TaskTracker</b>
         </p>
-        <button className="btn-reg_log transparent-back">
+        <button
+          onClick={handleRegisterRedirect}
+          className="btn-reg_log transparent-back"
+        >
           Зарегистрироваться
         </button>
       </div>

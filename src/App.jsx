@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import "./components/elements/elements.css";
 import "./components/crudPage/crudPage.css";
@@ -9,10 +10,10 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <section className="app-container">
-      {/* <RegisterForm /> */}
-      <LoginForm />
-    </section>
+    <Routes>
+      <Route path="/" element={<RegisterForm />} />
+      <Route path="/login" element={<LoginForm />} />
+    </Routes>
   );
 }
 
