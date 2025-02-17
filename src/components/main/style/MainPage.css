@@ -1,0 +1,27 @@
+.category-sidebar {
+  background-color: var(--dark-grey);
+
+  max-width: 400px;
+  min-width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 15px;
+
+  max-height: 624px;
+  height: 624px;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--btn-red) var(--dark-grey);
+
+  padding-left: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .category-sidebar {
+    display: none;
+  }
+}

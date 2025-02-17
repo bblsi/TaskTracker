@@ -5,15 +5,15 @@ import "./components/elements/elements.css";
 import "./components/crudPage/crudPage.css";
 import RegisterForm from "./components/crudPage/RegisterForm";
 import LoginForm from "./components/crudPage/LoginForm";
+import MainPage from "./components/main/MainPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <Routes>
-      <Route path="/" element={<RegisterForm />} />
-      <Route path="/login" element={<LoginForm />} />
-    </Routes>
+    // <Routes>
+    //   <Route path="/" element={<RegisterForm />} />
+    //   <Route path="/login" element={<LoginForm />} />
+    // </Routes>
+    <MainPage />
   );
 }
 
