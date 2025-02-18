@@ -1,8 +1,12 @@
+.main {
+  display: flex;
+}
+
 .category-sidebar {
   background-color: var(--dark-grey);
 
-  max-width: 400px;
-  min-width: 300px;
+  min-width: 340px;
+  max-width: 350px;
 
   display: flex;
   flex-direction: column;
