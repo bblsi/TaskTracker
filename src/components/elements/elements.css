@@ -20,11 +20,6 @@
   font-family: inherit;
 }
 
-.form-input::placeholder {
-  color: var(--main-black);
-  font-weight: 500;
-}
-
 .form-input:focus {
   background: rgba(255, 255, 255, 0.8);
 }
@@ -64,4 +59,43 @@
   margin-right: 15px;
 
   vertical-align: middle;
+}
+
+/* Button Action */
+.btn-action {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+
+  border: 2px solid #646464;
+  border-radius: 10px;
+  background: none;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 15px;
+  margin-bottom: 15px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+  background-color: #646464;
+}
+
+.btn-action img {
+  width: 14px;
+
+  transition: all 0.5s ease;
+}
+
+.btn-action:hover img {
+  transform: rotate(90deg);
 }

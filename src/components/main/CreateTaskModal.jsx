@@ -1,0 +1,136 @@
+import "./style/CreateTaskModal.css";
+import plusIcon from "../../assets/plus.png";
+import { useState } from "react";
+
+export default function CreateTaskModal(props) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [important, setImportant] = useState(false);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [error, setError] = useState("");
+  const [sucsess, setSucsess] = useState("");
+  const timeToComplete = `${date}T${time}:00`;
+
+  console.log(title, description, important, timeToComplete);
+
+  const handleCreateTask = async () => {
+    setError("");
+    setSucsess("");
+
+    if (!title) {
+      setError("Название не может быть пустым");
+      return;
+    }
+    if (description.length >= 255) {
+      setError("Описание не может быть длиннее 255 слов");
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("token");
+      console.log("Токен:", token);
+      const response = await fetch("http://89.22.225.116:8080/api/task", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          important,
+          timeToComplete,
+        }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Задание создано:", data);
+        setSucsess("Задание успешно создано");
+        setDate("");
+        setTime("");
+        setImportant(false);
+        setDescription("");
+        setTitle("");
+      } else {
+        const errorData = await response.json();
+        console.error("Ошибка сервера:", errorData);
+        setError(errorData.message || "Ошибка при создании задания");
+      }
+    } catch (error) {
+      console.error("Ошибка сети:", error);
+      setError("Ошибка сети");
+    }
+  };
+
+  return (
+    <div className="create-task-modal" onClick={() => props.onIsOpen(false)}>
+      <form
+        className="create-task-form"
+        action="submit"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleCreateTask();
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h2 className="task-form-title">Создание задачи</h2>
+        <button
+          className="btn-close-modal-task"
+          onClick={() => props.onIsOpen(false)}
+        >
+          <img src={plusIcon} alt="plus icon" />
+        </button>
+
+        <div className="input-wrapper">
+          <input
+            className="task-form-input_name"
+            type="text"
+            value={title}
+            placeholder="Введите название"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            className="task-form-input_date"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <input
+            className="task-form-input_time"
+            type="time"
+            value={time}
+            name="time"
+            id="time"
+            onChange={(e) => setTime(e.target.value)}
+          />
+        </div>
+        <textarea
+          className="task-form-input_desc"
+          name="description"
+          value={description}
+          placeholder="Введите описание"
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <span className="checkbox-wrapper">
+          <input
+            className="task-form-input_checkbox"
+            type="checkbox"
+            name="important"
+            value={important}
+            id="important"
+            onChange={(e) => setImportant(e.target.checked)}
+          />
+
+          <label htmlFor="important">Пометить как важное</label>
+          {error && <p className="message red">{error}!</p>}
+          {sucsess && <p className="message green">{sucsess}!</p>}
+        </span>
+
+        <button onClick={handleCreateTask} className="btn-submit-task">
+          Создать задание
+        </button>
+      </form>
+    </div>
+  );
+}

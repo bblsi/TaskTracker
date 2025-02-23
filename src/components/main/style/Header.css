@@ -4,7 +4,7 @@ header {
   justify-content: space-between;
 
   background-color: var(--dark-grey);
-  border-bottom: 1px solid #767676;
+  border-bottom: 2px solid #767676;
 }
 
 .logo-mobile {
@@ -66,4 +66,11 @@ header {
   header .logo {
     display: none;
   }
+}
+
+.btn-account {
+  background: none;
+  border: 0;
+
+  cursor: pointer;
 }

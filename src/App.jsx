@@ -9,11 +9,11 @@ import MainPage from "./components/main/MainPage";
 
 function App() {
   return (
-    // <Routes>
-    //   <Route path="/" element={<RegisterForm />} />
-    //   <Route path="/login" element={<LoginForm />} />
-    // </Routes>
-    <MainPage />
+    <Routes>
+      <Route path="/" element={<RegisterForm />} />
+      <Route path="/login" element={<LoginForm />} />
+      <Route path="/main" element={<MainPage />} />
+    </Routes>
   );
 }
 

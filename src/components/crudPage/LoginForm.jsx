@@ -16,6 +16,10 @@ export default function LoginForm() {
     navigate("/");
   };
 
+  const handleMainRedirect = () => {
+    navigate("/main");
+  };
+
   const handleLogin = async () => {
     setError("");
     setSucsess("");
@@ -37,6 +41,7 @@ export default function LoginForm() {
       if (response.ok) {
         localStorage.setItem("token", data.accessToken);
         setSucsess("Вход успешно выполнен");
+        handleMainRedirect();
       } else {
         if (data.message === "Invalid password") {
           setError("Неверный пароль");

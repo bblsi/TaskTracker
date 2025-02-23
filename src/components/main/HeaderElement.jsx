@@ -9,9 +9,10 @@ export default function HeaderElement() {
       </div>
       <div className="header-right">
         <button className="btn-exit">Выйти</button>
-        <div className="account-logo-container">
+
+        <button href="" className="btn-account">
           <img src={accountLogo} alt="" className="account-logo-img" />
-        </div>
+        </button>
       </div>
     </header>
   );

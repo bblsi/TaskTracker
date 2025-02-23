@@ -1,0 +1,59 @@
+.wrapper-create_category {
+  position: relative;
+}
+
+.input-create_category {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+
+  border: 2px solid #646464;
+  border-radius: 10px;
+  background: none;
+  outline: none;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 35px 10px 15px;
+  margin-bottom: 15px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.input-create_category:hover {
+  background-color: #646464;
+}
+
+.input-create_category::placeholder {
+  color: #fff;
+}
+
+.btn-create_category {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+
+  background: none;
+  border-radius: 100%;
+  border: 0;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-create_category img {
+  width: 100%;
+}
+
+.btn-create_category:hover {
+  transform: translateY(-3px);
+}

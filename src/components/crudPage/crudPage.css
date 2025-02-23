@@ -1,161 +1,171 @@
 .form-container {
-    display: flex;
-    height: 100%;
+  display: flex;
+  height: 100%;
 
-    position: relative;
-
+  position: relative;
 }
 
 .logo {
-    position: absolute;
-    left: 20px;
-    top: 20px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
 
-    padding: 5px 10px;
-    border-radius: 4px;
+  padding: 5px 10px;
+  border-radius: 4px;
 
-    background: linear-gradient(107deg, rgba(255,75,43,1) 0%, rgba(255,65,108,1) 100%);
+  background: linear-gradient(
+    107deg,
+    rgba(255, 75, 43, 1) 0%,
+    rgba(255, 65, 108, 1) 100%
+  );
 }
 /* Registration Page */
 
 .left-form-wrapper,
 .right-side {
-    display: flex;
-    flex: 1; 
-    justify-content: center; 
-    align-items: center; 
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 
-    padding: 0 40px;
-
+  padding: 0 40px;
 }
 
 .left-form {
-    text-align: center;
-    max-width: 350px;
+  text-align: center;
+  max-width: 350px;
 }
 
-
 .title {
-    font-weight: 700;
-    font-size: 3rem;
+  font-weight: 700;
+  font-size: 3rem;
 
-    margin-bottom: 56px;
+  margin-bottom: 56px;
 }
 
 .btn-reg_log {
-    height: 50px;
-    padding: 0 50px;
+  height: 50px;
+  padding: 0 50px;
 
-    border-radius: 10px;
-    border: 0;
+  border-radius: 10px;
+  border: 0;
 
-    background-color: var(--btn-red);
+  background-color: var(--btn-red);
 
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: inherit;
-    text-align: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  text-align: center;
 
-    margin-top: 90px;
+  margin-top: 90px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-reg_log:hover {
-    background-color: var(--btn-red-hover);
-    transform: translateY(-4px);
+  background-color: var(--btn-red-hover);
+  transform: translateY(-4px);
 }
 
 .transparent-back {
-    background: transparent;
-    border: 2px solid #fff;
+  background: transparent;
+  border: 2px solid #fff;
 }
 
 .checkbox-container {
-    width: 100%;
-    text-align: start;
+  width: 100%;
+  text-align: start;
 }
 
-.checkbox-container label, input[type="checkbox"] {
-    cursor: pointer;
+.checkbox-container label,
+input[type="checkbox"] {
+  cursor: pointer;
 }
 
 .right-side {
-    background: rgb(255,75,43);
-    background: -moz-linear-gradient(107deg, rgba(255,75,43,1) 0%, rgba(255,65,108,1) 100%);
-    background: -webkit-linear-gradient(107deg, rgba(255,75,43,1) 0%, rgba(255,65,108,1) 100%);
+  background: rgb(255, 75, 43);
+  background: -moz-linear-gradient(
+    107deg,
+    rgba(255, 75, 43, 1) 0%,
+    rgba(255, 65, 108, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    107deg,
+    rgba(255, 75, 43, 1) 0%,
+    rgba(255, 65, 108, 1) 100%
+  );
 }
 
 .form-description {
-    font-weight: 16px;
-    text-align: center;
+  font-weight: 16px;
+  text-align: center;
 }
 
 .message {
-    text-align: start;
-    margin-top: 10px;
-    font-size: 14px;
+  text-align: start;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 .red {
-    color: #ff3030;
+  color: #ff3030;
 }
 
 .green {
-    color: #0ca401;
+  color: #0ca401;
 }
 
 .adaptive {
-    margin-top: 20px;
-    display: none;
+  margin-top: 20px;
+  display: none;
 }
 
 @media screen and (max-width: 900px) {
-    .left-form,
-    .right-side {
-        margin: 0 30px;
-    }
+  .left-form,
+  .right-side {
+    margin: 0 30px;
+  }
 
-    .left-form-wrapper {
-        padding: 0;
-    }
-    
-    .right-side {
-        display: none;
-    }
-    
-    .app-container {
-        height: 100vh;
-        margin: 0;
-        width: 100%;
-        border-radius: 0;;
-    }
+  .left-form-wrapper {
+    padding: 0;
+  }
 
-    .adaptive {
-        display: inline;
-    }
+  .right-side {
+    display: none;
+  }
 
-    .btn-reg_log {
-        width: 100%;
-    }
+  .app-container {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    max-height: none;
+  }
+
+  .adaptive {
+    display: inline;
+  }
+
+  .btn-reg_log {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 450px) {
-    .title {
-        font-size: 2rem;
-    }
+  .title {
+    font-size: 2rem;
+  }
 
-    .app-container {
-        border-radius: 0;
-    }
+  .app-container {
+    border-radius: 0;
+  }
 
-    .btn-reg_log {
-        height: 40px;
-        
-    }
+  .btn-reg_log {
+    height: 40px;
+  }
 }

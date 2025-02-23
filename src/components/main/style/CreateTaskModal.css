@@ -1,0 +1,168 @@
+.create-task-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  position: absolute;
+}
+
+.create-task-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+
+  width: 70%;
+  min-width: 350px;
+  height: 420px;
+
+  background-color: var(--main-black);
+  border: 1px solid #fff;
+  border-radius: 10px;
+
+  padding: 30px 40px;
+
+  position: relative;
+}
+
+.create-task-modal .btn-close-modal-task {
+  border: 0;
+  background: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.create-task-modal img {
+  width: 20px;
+  transform: rotate(45deg);
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.create-task-modal img:hover {
+  transform: rotate(135deg);
+}
+
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.create-task-form input:not([type="checkbox"]),
+textarea {
+  height: 40px;
+
+  border: 0;
+  outline: 0;
+  border-radius: 10px;
+
+  font-family: inherit;
+  color: var(--main-black);
+  font-weight: 500;
+
+  resize: none;
+
+  padding: 10px 10px;
+}
+
+.create-task-form input:focus,
+textarea:focus {
+  background: rgba(194, 194, 194, 0.8);
+  border: none;
+}
+
+.create-task-form .task-form-input_name {
+  max-width: 550px;
+  min-width: 165px;
+
+  flex-grow: 1;
+}
+
+.create-task-form .task-form-input_date,
+.task-form-input_time {
+  min-width: 120px;
+}
+
+.create-task-form .task-form-input_desc {
+  width: 100%;
+  height: 100px;
+}
+
+.checkbox-wrapper {
+  width: 100%;
+}
+
+.create-task-form label {
+  cursor: pointer;
+}
+
+.task-form-input_checkbox {
+  margin-right: 10px;
+}
+
+.btn-submit-task {
+  height: 40px;
+  padding: 0 50px;
+
+  border-radius: 10px;
+  border: 0;
+
+  background-color: var(--btn-red);
+
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  text-align: center;
+
+  cursor: pointer;
+
+  margin-top: 10px;
+
+  transition: all 0.2s ease;
+}
+
+.btn-submit-task:hover {
+  background-color: var(--btn-red-hover);
+  transform: translateY(-4px);
+}
+
+@media screen and (max-width: 900px) {
+  .create-task-form {
+    height: 550px;
+  }
+
+  .input-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .create-task-form .task-form-input_name {
+    flex-grow: 0;
+    width: 100%;
+  }
+
+  .create-task-form .task-form-input_date,
+  .task-form-input_time {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 735px) {
+}
+
+@media screen and (max-width: 590px) {
+  .create-task-form .task-form-input_date,
+  .task-form-input_time {
+    width: 100%;
+  }
+}

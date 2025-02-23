@@ -4,6 +4,7 @@
   --main-black: #1c1c1c;
   --light-grey: #d9d9d9;
   --dark-grey: #303030;
+  --grey: #646464;
 }
 
 * {
@@ -17,4 +18,10 @@ body {
   color: #fff;
 
   background-color: #5a5a5a;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--main-black);
+  font-weight: 500;
 }

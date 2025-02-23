@@ -1,6 +1,8 @@
 import "./card.css";
+import { useState } from "react";
 
 export default function Card(props) {
+  const [completeTask, setCompleteTask] = useState(props.data.isCompleted);
   return (
     <section className="card-container" key={props.data.id}>
       <h3 className="card-title">{props.data.title}</h3>
@@ -14,7 +16,12 @@ export default function Card(props) {
         {props.data.isCompleted ? (
           <button className="btn-card completed">Выполнено</button>
         ) : (
-          <button className="btn-card">Завершить</button>
+          <button
+            className="btn-card"
+            onClick={() => props.onCompleteTask(props.data.id)}
+          >
+            Завершить
+          </button>
         )}
       </div>
     </section>
