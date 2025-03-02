@@ -29,7 +29,7 @@ export default function CreateTaskModal(props) {
 
     try {
       const token = localStorage.getItem("token");
-      console.log("Токен:", token);
+
       const response = await fetch("http://89.22.225.116:8080/api/task", {
         method: "POST",
         headers: {
@@ -67,7 +67,6 @@ export default function CreateTaskModal(props) {
     <div className="create-task-modal" onClick={() => props.onIsOpen(false)}>
       <form
         className="create-task-form"
-        action="submit"
         onSubmit={(e) => {
           e.preventDefault();
           handleCreateTask();
@@ -127,9 +126,7 @@ export default function CreateTaskModal(props) {
           {sucsess && <p className="message green">{sucsess}!</p>}
         </span>
 
-        <button onClick={handleCreateTask} className="btn-submit-task">
-          Создать задание
-        </button>
+        <button className="btn-submit-task">Создать задание</button>
       </form>
     </div>
   );

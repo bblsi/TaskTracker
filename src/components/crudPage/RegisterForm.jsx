@@ -116,7 +116,7 @@ export default function RegisterForm() {
       <div className="right-side">
         <h2 className="title">Привет, Чмо!</h2>
         <p className="form-description">
-          Уже есть аккаунт ? Нажми кнопку “Войти” и продолжи свое путешествие с
+          Уже есть аккаунт ? Нажми кнопку “Войти” и продолжи свое путешествие с{" "}
           <b>TaskTracker</b>
         </p>
         <button

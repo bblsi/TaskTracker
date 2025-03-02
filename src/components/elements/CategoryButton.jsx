@@ -1,18 +1,19 @@
 import { useState } from "react";
 
 export default function CategoryButton(props) {
-  const [currentCategory, setCurrentCategory] = useState("all");
   return (
-    <button className="btn-category">
-      <img src={props.img} alt={props.type} />
-
-      {props.type === "all"
+    <button
+      className="btn-category"
+      onClick={() => props.onFilterCategory(props.name)}
+    >
+      <img src={props.img} alt={props.name} />
+      {props.name === "all"
         ? "Все задания"
-        : props.type === "completed"
+        : props.name === "completed"
         ? "Выполненные задания"
-        : props.type === "incompleted"
+        : props.name === "incompleted"
         ? "Невыполненные задания"
-        : props.type === "important"
+        : props.name === "important"
         ? "Важные задания"
         : props.name}
     </button>

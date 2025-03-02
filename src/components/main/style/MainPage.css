@@ -13,7 +13,7 @@
 
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--btn-red) var(--dark-grey);
+  scrollbar-color: var(--red) var(--dark-grey);
 }
 
 .category-sidebar {
@@ -29,10 +29,13 @@
 .cards {
   height: 624px;
   overflow-y: auto;
+  flex-grow: 1;
 
   scrollbar-width: thin;
-  scrollbar-color: var(--btn-red) var(--dark-grey);
+  scrollbar-color: var(--red) var(--dark-grey);
 }
+
+/* MEDIA */
 
 @media screen and (max-width: 900px) {
   .main-sidebar {
@@ -41,6 +44,7 @@
 
   .main {
     max-height: none;
+    height: 100vh;
   }
 
   .cards {

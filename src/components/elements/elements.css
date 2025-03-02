@@ -24,15 +24,11 @@
   background: rgba(255, 255, 255, 0.8);
 }
 
-@media screen and (max-width: 450px) {
-  .form-input {
-    height: 40px;
-  }
-}
-
 /* Category button */
 
 .btn-category {
+  width: 100%;
+  text-align: start;
   background: none;
   border: 0;
   border-radius: 10px;
@@ -40,8 +36,6 @@
   color: #fff;
   font-size: 18px;
   font-weight: 500;
-
-  cursor: pointer;
 
   padding: 12px 18px;
 
@@ -81,8 +75,6 @@
   padding: 10px 15px;
   margin-bottom: 15px;
 
-  cursor: pointer;
-
   transition: all 0.2s ease;
 }
 
@@ -98,4 +90,60 @@
 
 .btn-action:hover img {
   transform: rotate(90deg);
+}
+
+/* DeleteTaskModal */
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  position: absolute;
+  z-index: 100;
+}
+
+.delete-task-modal {
+  text-align: center;
+
+  background-color: var(--main-black);
+  border: 2px solid #fff;
+  border-radius: 10px;
+
+  width: 400px;
+
+  padding: 20px;
+}
+
+.delete-task-modal button {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+
+  border: 1px solid var(--red);
+  border-radius: 10px;
+  background: none;
+  color: #fff;
+
+  width: 100px;
+  height: 30px;
+
+  margin: 20px 10px;
+
+  transition: all 0.2s ease;
+}
+
+.delete-task-modal button:hover {
+  background-color: var(--light-red);
+}
+
+/* MEDIA */
+
+@media screen and (max-width: 450px) {
+  .form-input {
+    height: 40px;
+  }
 }

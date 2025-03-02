@@ -1,6 +1,7 @@
 :root {
-  --btn-red: #ff464d;
-  --btn-red-hover: #fc5f64;
+  --dim-red: rgb(148, 69, 69);
+  --red: #ff464d;
+  --light-red: #fc5f64;
   --main-black: #1c1c1c;
   --light-grey: #d9d9d9;
   --dark-grey: #303030;
@@ -24,4 +25,10 @@ input::placeholder,
 textarea::placeholder {
   color: var(--main-black);
   font-weight: 500;
+}
+
+button,
+input,
+textarea {
+  cursor: pointer;
 }

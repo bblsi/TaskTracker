@@ -1,9 +1,37 @@
 .card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 30px 40px;
   padding: 15px;
 
+  min-height: 160px;
+
   background-color: var(--dark-grey);
   border-radius: 10px;
+
+  position: relative;
+
+  cursor: pointer;
+}
+
+.card-container .btn-card-delete {
+  position: absolute;
+  right: 15px;
+  width: 10px;
+
+  border: 0;
+  background: none;
+
+  transition: all 0.5s ease;
+}
+
+.btn-card-delete img {
+  width: 100%;
+}
+
+.btn-card-delete:hover {
+  transform: rotate(90deg);
 }
 
 .card-title {
@@ -11,11 +39,21 @@
   font-size: 22px;
 
   margin-bottom: 8px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-desc {
   font-weight: 500;
   font-size: 16px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-bottom {
@@ -31,7 +69,7 @@
   font-size: 14px;
 }
 
-.btn-card {
+.btn-card-complete {
   font-family: inherit;
   font-weight: 500;
   font-size: 14px;
@@ -46,14 +84,20 @@
 
   cursor: pointer;
 
+  margin-left: 10px;
+
   transition: all 0.2s ease;
 }
 
-.btn-card:hover {
+.btn-card-complete:hover {
   background-color: #646464;
 }
 
 .completed {
   border-color: #66d05c;
   pointer-events: none;
+}
+
+.important {
+  border: 2px solid var(--light-red);
 }
