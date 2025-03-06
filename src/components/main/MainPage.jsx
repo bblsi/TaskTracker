@@ -6,6 +6,8 @@ import CategoryButton from "../elements/CategoryButton";
 import Card from "../elements/Card";
 import ActionButton from "../elements/ActionButton";
 import DeleteTaskModal from "../elements/DeleteTaskModal";
+import TaskModal from "./TaskModal";
+
 import "./style/MainPage.css";
 
 import allTasksIcon from "../../assets/all.png";
@@ -19,23 +21,27 @@ import {
   fetchCategories,
   fetchImportantTasks,
   fetchTasksByStatus,
+  fetchTasksByCategory,
 } from "../data/data";
 
 export default function MainPage() {
   const [categories, setCategories] = useState([
-    { name: "all", id: 1 },
-    { name: "completed", id: 2 },
-    { name: "incompleted", id: 3 },
-    { name: "important", id: 4 },
+    { name: "all" },
+    { name: "completed" },
+    { name: "incompleted" },
+    { name: "important" },
   ]);
-  const [customCategories, setCustomCategories] = useState([]);
+  const [usersCategories, setUsersCategories] = useState([]);
   const [cardData, setCardData] = useState([]);
 
-  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+  const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   const [taskToDelete, setTaskToDelete] = useState(null);
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [usersCategoryId, setUsersCategoryId] = useState(null);
 
   const [display, setDisplay] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -48,17 +54,23 @@ export default function MainPage() {
     custom: customTaskIcon,
   };
 
-  function handleOpenTaskModal(isOpen) {
-    return setIsTaskModalOpen(isOpen);
+  function handleOpenCreateTaskModal(isOpen) {
+    return setIsCreateTaskModalOpen(isOpen);
   }
   function handleOpenCategoryModal(isOpen, isDisplay) {
     return setIsCategoryModalOpen(isOpen), setDisplay(isDisplay);
+  }
+  function handleOpenTaskModal(isOpen, data = null) {
+    return setIsTaskModalOpen(isOpen), setSelectedTask(data);
   }
   function handleOpenDeleteModal(isOpen, taskId) {
     return setIsDeleteModalOpen(isOpen), setTaskToDelete(taskId);
   }
   function handleFilterCategory(categoryName) {
     return setCategoryFilter(categoryName);
+  }
+  function handleUsersCategoryId(id) {
+    return setUsersCategoryId(id);
   }
 
   useEffect(() => {
@@ -71,8 +83,10 @@ export default function MainPage() {
           tasks = await fetchTasksByStatus("COMPLETED");
         } else if (categoryFilter === "incompleted") {
           tasks = await fetchTasksByStatus("CREATED");
-        } else {
+        } else if (categoryFilter === "all") {
           tasks = await fetchAllTasks();
+        } else {
+          tasks = await fetchTasksByCategory(usersCategoryId);
         }
         setCardData(tasks);
       } catch (error) {
@@ -81,13 +95,12 @@ export default function MainPage() {
     };
     loadTasks();
   }, [categoryFilter]);
-  console.log(categoryFilter);
 
   useEffect(() => {
     const loadCategories = async () => {
       try {
         const categories = await fetchCategories();
-        setCustomCategories(categories);
+        setUsersCategories(categories);
       } catch (error) {
         console.error("Ошибка при загрузке категорий:", error);
       }
@@ -161,18 +174,20 @@ export default function MainPage() {
 
   const defaultCategories = categories.map((category) => (
     <CategoryButton
-      key={category.id}
       name={category.name}
       img={categoryIcons[category.name]}
       onFilterCategory={handleFilterCategory}
+      onHandleId={handleUsersCategoryId}
     />
   ));
-  const сustomCategories = customCategories.map((category) => (
+  const сustomCategories = usersCategories.map((category) => (
     <CategoryButton
       key={category.id}
+      id={category.id}
       name={category.name}
       img={categoryIcons["custom"]}
       onFilterCategory={handleFilterCategory}
+      onHandleId={handleUsersCategoryId}
     />
   ));
 
@@ -182,6 +197,7 @@ export default function MainPage() {
       data={card}
       onCompleteTask={handleCompleteTask}
       onDeleteTask={handleOpenDeleteModal}
+      onOpenTask={(isOpen) => handleOpenTaskModal(isOpen, card)}
     />
   ));
 
@@ -192,6 +208,15 @@ export default function MainPage() {
         className="main"
         onClick={() => handleOpenCategoryModal(false, " ")}
       >
+        {isTaskModalOpen && (
+          <TaskModal
+            data={selectedTask}
+            onOpenTask={handleOpenTaskModal}
+            onCompleteTask={handleCompleteTask}
+            onDeleteTask={handleOpenDeleteModal}
+          />
+        )}
+
         {isDeleteModalOpen && (
           <DeleteTaskModal onDeleteTask={handleDeleteTask} />
         )}
@@ -208,7 +233,7 @@ export default function MainPage() {
 
             <ActionButton
               text="Создать задачу"
-              onIsOpen={handleOpenTaskModal}
+              onIsOpen={handleOpenCreateTaskModal}
             />
           </div>
           <div className="category-sidebar">
@@ -217,7 +242,12 @@ export default function MainPage() {
         </div>
 
         <div className="cards">{cardsToRender}</div>
-        {isTaskModalOpen && <CreateTaskModal onIsOpen={handleOpenTaskModal} />}
+        {isCreateTaskModalOpen && (
+          <CreateTaskModal
+            categories={usersCategories}
+            onIsOpen={handleOpenCreateTaskModal}
+          />
+        )}
       </main>
     </>
   );

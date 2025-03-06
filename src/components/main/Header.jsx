@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import accountLogo from "../../assets/account-logo.png";
 import "./style/Header.css";
+
 export default function HeaderElement() {
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    return localStorage.removeItem("token"), navigate("/login");
+  }
+
   return (
     <header>
       <div className="header-left">
@@ -8,9 +16,11 @@ export default function HeaderElement() {
         <h2 className="logo-mobile">T</h2>
       </div>
       <div className="header-right">
-        <button className="btn-exit">Выйти</button>
+        <button className="btn-exit" onClick={handleLogout}>
+          Выйти
+        </button>
 
-        <button href="" className="btn-account">
+        <button className="btn-account">
           <img src={accountLogo} alt="" className="account-logo-img" />
         </button>
       </div>

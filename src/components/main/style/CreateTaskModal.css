@@ -17,9 +17,9 @@
   align-items: center;
   gap: 30px;
 
-  width: 70%;
+  max-width: 700px;
+  width: 100%;
   min-width: 350px;
-  height: 420px;
 
   background-color: var(--main-black);
   border: 1px solid #fff;
@@ -30,7 +30,7 @@
   position: relative;
 }
 
-.create-task-modal .btn-close-modal-task {
+.btn-close-modal-task {
   border: 0;
   background: none;
   position: absolute;
@@ -38,14 +38,14 @@
   right: 15px;
 }
 
-.create-task-modal img {
+.btn-close-modal-task img {
   width: 20px;
   transform: rotate(45deg);
 
   transition: all 0.3s ease;
 }
 
-.create-task-modal img:hover {
+.btn-close-modal-task img:hover {
   transform: rotate(135deg);
 }
 
@@ -58,7 +58,8 @@
 }
 
 .create-task-form input:not([type="checkbox"]),
-textarea {
+textarea,
+select {
   height: 40px;
 
   border: 0;
@@ -75,21 +76,25 @@ textarea {
 }
 
 .create-task-form input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   background: rgba(194, 194, 194, 0.8);
   border: none;
 }
 
 .create-task-form .task-form-input_name {
-  max-width: 550px;
-  min-width: 165px;
+  flex-grow: 1;
+}
+
+.create-task-form .task-form-select_category {
+  min-width: 150px;
 
   flex-grow: 1;
 }
 
 .create-task-form .task-form-input_date,
 .task-form-input_time {
-  min-width: 110px;
+  width: 100%;
 }
 
 .create-task-form .task-form-input_desc {
@@ -110,7 +115,7 @@ textarea:focus {
 }
 
 .btn-submit-task {
-  height: 40px;
+  height: 50px;
   padding: 0 50px;
 
   border-radius: 10px;
@@ -124,8 +129,6 @@ textarea:focus {
   font-family: inherit;
   text-align: center;
 
-  margin-top: 10px;
-
   transition: all 0.2s ease;
 }
 
@@ -138,17 +141,22 @@ textarea:focus {
 
 @media screen and (max-width: 900px) {
   .create-task-form {
-    height: 550px;
     padding: 30px 40px;
+    margin: 0 80px;
   }
 
   .input-wrapper {
     flex-wrap: wrap;
   }
 
-  .create-task-form .task-form-input_name {
+  .create-task-form .task-form-input_name,
+  .task-form-select_category {
     flex-grow: 0;
     width: 100%;
+  }
+
+  .create-task-form .task-form-select_category {
+    max-width: none;
   }
 
   .create-task-form .task-form-input_date,
@@ -161,5 +169,9 @@ textarea:focus {
   .create-task-form .task-form-input_date,
   .task-form-input_time {
     width: 100%;
+  }
+
+  .btn-submit-task {
+    height: 40px;
   }
 }

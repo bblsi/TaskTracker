@@ -107,6 +107,7 @@
 }
 
 .delete-task-modal {
+  position: absolute;
   text-align: center;
 
   background-color: var(--main-black);

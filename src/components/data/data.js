@@ -75,6 +75,37 @@ export const fetchTasksByStatus = async (status) => {
     }
   };
 
+  export const fetchTasksByCategory = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("Токен отсутствует. Пожалуйста, войдите в систему.");
+      }
+
+      const url = new URL(`${API_BASE_URL}/api/task/by-category`);
+      url.searchParams.append("id", id);
+  
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Ошибка сервера:", errorText);
+        throw new Error(`Ошибка при загрузке задач по категории: ${errorText}`);
+      }
+  
+      return await response.json();
+    } catch (error) {
+      console.error("Ошибка:", error);
+      throw error;
+    }
+  };
+
 export const fetchCategories = async () => {
   try {
     const token = localStorage.getItem("token");

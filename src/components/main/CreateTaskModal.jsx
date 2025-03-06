@@ -10,9 +10,10 @@ export default function CreateTaskModal(props) {
   const [time, setTime] = useState("");
   const [error, setError] = useState("");
   const [sucsess, setSucsess] = useState("");
+  const [categoryId, setCategoryId] = useState();
   const timeToComplete = `${date}T${time}:00`;
 
-  console.log(title, description, important, timeToComplete);
+  console.log(title, description, important, date, categoryId);
 
   const handleCreateTask = async () => {
     setError("");
@@ -41,6 +42,7 @@ export default function CreateTaskModal(props) {
           description,
           important,
           timeToComplete,
+          categoryId,
         }),
       });
       if (response.ok) {
@@ -52,6 +54,7 @@ export default function CreateTaskModal(props) {
         setImportant(false);
         setDescription("");
         setTitle("");
+        setCategoryId();
       } else {
         const errorData = await response.json();
         console.error("Ошибка сервера:", errorData);
@@ -62,6 +65,12 @@ export default function CreateTaskModal(props) {
       setError("Ошибка сети");
     }
   };
+
+  const dropdownCategories = props.categories.map((category) => (
+    <option key={category.id} value={category.id}>
+      {category.name}
+    </option>
+  ));
 
   return (
     <div className="create-task-modal" onClick={() => props.onIsOpen(false)}>
@@ -89,6 +98,16 @@ export default function CreateTaskModal(props) {
             placeholder="Введите название"
             onChange={(e) => setTitle(e.target.value)}
           />
+          <select
+            className="task-form-select_category"
+            onChange={(e) => setCategoryId(e.target.value)}
+          >
+            <option value="">Выберите категорию</option>
+            {dropdownCategories}
+          </select>
+        </div>
+
+        <div className="input-wrapper">
           <input
             className="task-form-input_date"
             type="date"
@@ -104,6 +123,7 @@ export default function CreateTaskModal(props) {
             onChange={(e) => setTime(e.target.value)}
           />
         </div>
+
         <textarea
           className="task-form-input_desc"
           name="description"

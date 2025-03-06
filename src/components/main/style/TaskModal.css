@@ -1,0 +1,102 @@
+.task-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 700px;
+  min-width: 350px;
+
+  background-color: var(--main-black);
+  border: 2px solid #fff;
+  border-radius: 10px;
+
+  position: relative;
+
+  padding: 30px;
+}
+
+.task-modal-top {
+  margin-bottom: 80px;
+}
+
+.task-modal-top h4 {
+  font-size: 32px;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+}
+
+.task-modal-top p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.task-modal-bottom_categories,
+.task-modal-bottom_categories ul {
+  display: flex;
+  justify-content: start;
+  gap: 40px;
+}
+
+.task-modal-bottom_date {
+  margin: 15px 0 40px 0;
+}
+
+.task-modal-bottom_btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-card-edit {
+  width: 100%;
+  max-width: 280px;
+  height: 30px;
+
+  text-align: start;
+  position: relative;
+
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+
+  color: #fff;
+  background: none;
+  border: 1px solid var(--light-grey);
+  border-radius: 10px;
+
+  cursor: pointer;
+  padding: 0 15px;
+  transition: all 0.2s ease;
+}
+
+.btn-card-edit:hover {
+  background-color: #646464;
+}
+
+.btn-card-edit img {
+  width: 18px;
+  position: absolute;
+  right: 10px;
+}
+
+.btn-card-delete {
+  width: 140px;
+  height: 30px;
+
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+
+  color: #fff;
+  background: none;
+  border: 1px solid var(--light-grey);
+  border-radius: 10px;
+
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-card-delete:hover {
+  background-color: #646464;
+}

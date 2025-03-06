@@ -1,14 +1,19 @@
 import "./card.css";
 import { useState } from "react";
 import deleteIcon from "../../assets/close.png";
+import CompleteButton from "./CompleteButton";
 
 export default function Card(props) {
+  console.log(props.data.status, "Card");
   return (
-    <section className={"card-container"} key={props.data.id}>
-      <div className="card-top">
+    <section className="card-container" key={props.data.id}>
+      <div className="card-top" onClick={() => props.onOpenTask(true)}>
         <button
-          className="btn-card-delete"
-          onClick={() => props.onDeleteTask(true, props.data.id)}
+          className="btn-card-delete_cross"
+          onClick={(e) => {
+            e.stopPropagation();
+            props.onDeleteTask(true, props.data.id);
+          }}
         >
           <img src={deleteIcon} alt="delete icon" />
         </button>
@@ -21,17 +26,10 @@ export default function Card(props) {
           Выполнить до:{" "}
           {props.data.timeToComplete ? props.data.timeToComplete : "не указано"}
         </span>
-
-        {props.data.isCompleted || props.data.status == "COMPLETED" ? (
-          <button className="btn-card-complete completed">Выполнено</button>
-        ) : (
-          <button
-            className="btn-card-complete"
-            onClick={() => props.onCompleteTask(props.data.id)}
-          >
-            Завершить
-          </button>
-        )}
+        <CompleteButton
+          data={props.data}
+          onCompleteTask={props.onCompleteTask}
+        />{" "}
       </div>
     </section>
   );

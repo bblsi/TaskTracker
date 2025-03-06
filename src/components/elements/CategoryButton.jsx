@@ -4,7 +4,10 @@ export default function CategoryButton(props) {
   return (
     <button
       className="btn-category"
-      onClick={() => props.onFilterCategory(props.name)}
+      onClick={() => {
+        props.onFilterCategory(props.name);
+        props.onHandleId(props.id);
+      }}
     >
       <img src={props.img} alt={props.name} />
       {props.name === "all"

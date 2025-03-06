@@ -29,6 +29,7 @@ textarea::placeholder {
 
 button,
 input,
-textarea {
+textarea,
+select {
   cursor: pointer;
 }
