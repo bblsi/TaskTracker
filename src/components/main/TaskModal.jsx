@@ -41,10 +41,16 @@ export default function TaskModal(props) {
                 Редактировать задание <img src={editIcon} alt="edit icon" />
               </button>
               <div className="btns-container">
-                <CompleteButton
-                  data={props.data}
-                  onCompleteTask={props.onCompleteTask}
-                />
+                {props.data.status === "COMPLETED" ? (
+                  <button
+                    className="btn-card-cancel"
+                    onClick={() => console.log("Work")}
+                  >
+                    Отменить
+                  </button>
+                ) : (
+                  ""
+                )}
                 <button
                   className="btn-card-delete"
                   onClick={() => {

@@ -170,10 +170,12 @@ export default function MainPage() {
     }
     setIsDeleteModalOpen(false);
     setTaskToDelete(null);
+    setIsTaskModalOpen(false);
   };
 
   const defaultCategories = categories.map((category) => (
     <CategoryButton
+      key={category.name}
       name={category.name}
       img={categoryIcons[category.name]}
       onFilterCategory={handleFilterCategory}
